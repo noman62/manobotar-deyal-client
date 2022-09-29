@@ -12,19 +12,10 @@ const SingleDonationPage = () => {
   const [product, setProduct] = useState([]);
 
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/api/donation/${singleId}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       setProduct(data)
-  //       console.log(product);
-  //     });
-  // }, [])
   useEffect(() => {
     const getDonation = async () => {
       const { data } = await axios.get(
-        `http://localhost:8000/api/donation/${singleId}`
+        `https://immense-badlands-43010.herokuapp.com/api/donation/${singleId}`
       )
       setProduct(data)
       // console.log(data)
@@ -59,11 +50,8 @@ const SingleDonationPage = () => {
               <p>{product.reasons}</p>
               <h4><b>Product Review:</b></h4>
               <RatingStar/>
-              <h4><b>Contact Information</b></h4>
-              <p><b>Phone:</b>+0000000 </p>
-              <p><b>Email:</b>eeee@email.com</p>
-              <p><b>Address:</b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil </p>
-              <a href="#" class="btn btn-primary" onClick={handleBook} >Book Now</a>
+     
+              {/* <a href="#" class="btn btn-primary" onClick={handleBook} >Book Now</a> */}
               <RequestModal/>
             </div>
           </div>

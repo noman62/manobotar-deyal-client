@@ -9,9 +9,10 @@ const Faq = () => {
     emailjs.sendForm('service_l4lc4g8', 'template_y1isv6t', form.current, 'user_Vd1304XFyKIBo5M42LnmA')
       .then((result) => {
           console.log(result.text);
-          window.alert("success")
+          window.location.reload(false);
       }, (error) => {
           console.log(error.text);
+          window.location.reload(false);
       });
   };
     return (
@@ -27,11 +28,11 @@ const Faq = () => {
                                 <input type="email" class="form-control bg-transparent text-light" id="email" placeholder="Enter email" name="email" />
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control bg-transparent text-light" placeholder="Enter Number" name="pswd" />
+                                <input type="number" class="form-control bg-transparent text-light" placeholder="Enter Number" name="pswd" />
 
                             </div>
                             <div class="col-sm-12">
-                                <textarea class="form-control text-light my-4 bg-transparent p-4" name="" id="" cols="5" rows="5" placeholder="Type Your Question"></textarea>
+                                <textarea class="form-control text-light my-4 bg-transparent p-4" name="message" id="" cols="5" rows="5" placeholder="Type Your Question"></textarea>
 
                             </div>
                             <div class="col-sm-12">

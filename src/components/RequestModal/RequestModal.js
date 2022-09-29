@@ -74,22 +74,7 @@ const RequestModal = () => {
             </div>
             <div class='modal-body'>
               <form className='upload-form' onSubmit={handleSubmit}>
-                {/* <div className='form-row'>
-                  <div className='form-group col-md-12'>
-                    <label for='notice-number'>email</label>
-                    <input
-                      type='text'
-                      className='form-control form-control-sm'
-                      id='notice-number'
-                      required
-                      placeholder='Type Your name'
-                      onChange={handleChange}
-                      name='text'
-                      //   onChange={handleChange}
-                      defaultValue=''
-                    />
-                  </div>
-                </div> */}
+            
                 <div className='form-row'>
                   <div className='form-group col-md-12'>
                     <label for='notice-number'>name</label>
