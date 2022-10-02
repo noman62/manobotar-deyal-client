@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div>
       <nav class='navbar navbar-expand-lg fixed-top navbar-light bg-white '>
-        <a class='navbar-brand' href='#'>
+        <a class='navbar-brand' href='/home'>
           মানবতার দেওয়াল
         </a>
         <button
@@ -34,15 +34,21 @@ const Header = () => {
               </a>
             </li>
             <li class='nav-item px-3'>
+              <a class='nav-link' href='/donatepage'>
+                Donate
+              </a>
+            </li>
+            <li class='nav-item px-3'>
+              <a class='nav-link' href='/requestpage'>
+                Request
+              </a>
+            </li>
+            <li class='nav-item px-3'>
               <a class='nav-link' href='/faq'>
                 Contact Us
               </a>
             </li>
-            <li class='nav-item px-3'>
-              <a class='nav-link' href='/donationSection'>
-                Donate
-              </a>
-            </li>
+           
           </ul>
           {user === null && (
             <div class=' my-2 my-lg-0'>

@@ -15,7 +15,7 @@ const DonationSection = () => {
                     <h2 class="text-uppercase">How to make a Donation?</h2>
                     <p class="text-uppercase text-dark">
                         <big>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id dicta quo fuga, mollitia necessitatibus eaque cupiditate aliquid sapiente nesciunt quaerat doloremque fugit debitis illo veniam officiis eligendi aperiam. Vel, quisquam!
+                        First, You have to create an account in our website.For creating new account, you need to give some information. Then , You have go to 'Donate' option and give the information which is asked.Finally, you can post for donation.
                         </big>
                     </p>
                     <a href="/donatepage" class="btn btn-light donate-button">Make a Donation</a>

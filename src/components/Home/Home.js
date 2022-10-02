@@ -15,7 +15,7 @@ const Home = () => {
                     <div class="col-sm-6 p-4">
                         <h1>It's an online store, <br /> Where you can Donate or Request for Something you need.</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus facilis molestias fugiat tenetur recusandae pariatur labore maxime. Quam, dolore sint.
+                        If you want to buy something , which you can't effort.You can make a request. If you want to give away something ,which you don't use or need anymore.You can donate also.
                         </p>
                         <a class="btn btn-primary px-4 create-button" href="#">Get Started</a>
                     </div>
@@ -54,7 +54,7 @@ const Home = () => {
                         <h2 class="text-uppercase">How to make a Request?</h2>
                         <p class="text-uppercase text-dark">
                             <big>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id dicta quo fuga, mollitia necessitatibus eaque cupiditate aliquid sapiente nesciunt quaerat doloremque fugit debitis illo veniam officiis eligendi aperiam. Vel, quisquam!
+                            First, You have to create an account in our website.For creating new account, you need to give some information. Then , You have go to 'Request' option and give the information which is asked.Finally, you can post for Request.
                             </big>
                         </p>
                         <a href="/requestpage" class="btn btn-light donate-button">Make a Request</a>
