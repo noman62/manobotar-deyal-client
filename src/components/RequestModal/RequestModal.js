@@ -23,7 +23,7 @@ const RequestModal = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // if (user === null) return history.push('/login')
+    if (user === null) return history.push('/login')
 
     axios
       .post('https://immense-badlands-43010.herokuapp.com/api/request', {
