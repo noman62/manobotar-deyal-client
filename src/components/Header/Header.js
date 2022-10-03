@@ -65,7 +65,7 @@ const Header = () => {
               </a>
 
               <a class='btn  px-4 button' href='/signUp'>
-                Create Account
+                Sign Up
               </a>
             </div>
           )}
