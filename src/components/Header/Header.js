@@ -1,12 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectUser } from '../../features/userSlice/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, selectUser } from '../../features/userSlice/userSlice'
 import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 const Header = () => {
   const user = useSelector(selectUser)
-  
+  const dispatch = useDispatch();
   const history = useHistory()
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    // make state null
+    const { data } = await axios.get('https://immense-badlands-43010.herokuapp.com/api/logout');
+    dispatch(logout());
+    history.push("/login");
+    
+  };
 
   return (
     <div>
@@ -48,7 +57,6 @@ const Header = () => {
                 Contact Us
               </a>
             </li>
-           
           </ul>
           {user === null && (
             <div class=' my-2 my-lg-0'>
@@ -61,14 +69,18 @@ const Header = () => {
               </a>
             </div>
           )}
-           {user !== null && user.user && (
-                  <>
-                  <a href="admindeshboard">{user?.user?.name}</a>
-                  {/* <button 
-                  onClick={e => handleLogout(e)}
-                  type="button" class="btn btn-primary ml-2">Log Out</button> */}
-                  </>
-                )}
+          {user !== null && user.user && (
+            <>
+              <a href='admindeshboard'>{user?.user?.name}</a>
+              <button
+                onClick={e => handleLogout(e)}
+                type='button'
+                class='btn btn-primary ml-2'
+              >
+                Log Out
+              </button>
+            </>
+          )}
         </div>
       </nav>
     </div>
