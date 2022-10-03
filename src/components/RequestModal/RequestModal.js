@@ -32,7 +32,8 @@ const RequestModal = () => {
       })
       .then(response => {
         console.log('success', response)
-        // history.push('/home')
+        
+        history.push('/home')
       })
       .catch(error => {
         console.log(error.response)
@@ -77,13 +78,13 @@ const RequestModal = () => {
             
                 <div className='form-row'>
                   <div className='form-group col-md-12'>
-                    <label for='notice-number'>name</label>
+                    <label for='notice-number'>Product name</label>
                     <input
                       type='text'
                       className='form-control form-control-sm'
                       id='notice-number'
                       required
-                      placeholder='Type Your name'
+                      placeholder='Type Product name'
                       onChange={handleChange}
                       name='name'
                       //   onChange={handleChange}
