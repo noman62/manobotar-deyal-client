@@ -12,12 +12,11 @@ const AdminDeshboard = () => {
   const [status, setStatus] = useState(true)
 
   const user = useSelector(selectUser)
- 
 
-
- 
   const getAppointments = async () => {
-    const { data } = await axios.get('https://immense-badlands-43010.herokuapp.com/api/donations')
+    const { data } = await axios.get(
+      'https://immense-badlands-43010.herokuapp.com/api/donations'
+    )
     setAllDonar(data)
     console.log(data)
   }
@@ -31,7 +30,6 @@ const AdminDeshboard = () => {
     } else {
       setStatus(true)
     }
-  
   }
   return (
     <div>
@@ -50,41 +48,73 @@ const AdminDeshboard = () => {
                     aria-controls='nav-admin-profile'
                     aria-selected='true'
                   >
-                   Profile
+                    Profile
                   </a>
-                  <a
-                    class='nav-item nav-link'
-                    id='nav-donate-list-tab'
-                    data-toggle='tab'
-                    href='#nav-donate-list'
-                    role='tab'
-                    aria-controls='nav-donate-list'
-                    aria-selected='false'
-                  >
-                    Donate List
-                  </a>
-                  <a
-                    class='nav-item nav-link'
-                    id='nav-request-list-tab'
-                    data-toggle='tab'
-                    href='#nav-request-list'
-                    role='tab'
-                    aria-controls='nav-request-list'
-                    aria-selected='false'
-                  >
-                    User List
-                  </a>
-                  <a
-                    class='nav-item nav-link'
-                    id='nav-user-list-tab'
-                    data-toggle='tab'
-                    href='#nav-user-list'
-                    role='tab'
-                    aria-controls='nav-user-list'
-                    aria-selected='false'
-                  >
-                    Request List
-                  </a>
+
+                  {user !== null && user.user && user.user.role === 'admin' && (
+                    <>
+                      <a
+                        class='nav-item nav-link'
+                        id='nav-donate-list-tab'
+                        data-toggle='tab'
+                        href='#nav-donate-list'
+                        role='tab'
+                        aria-controls='nav-donate-list'
+                        aria-selected='false'
+                      >
+                        Donate List
+                      </a>
+                      <a
+                        class='nav-item nav-link'
+                        id='nav-request-list-tab'
+                        data-toggle='tab'
+                        href='#nav-request-list'
+                        role='tab'
+                        aria-controls='nav-request-list'
+                        aria-selected='false'
+                      >
+                        User List
+                      </a>
+                      <a
+                        class='nav-item nav-link'
+                        id='nav-user-list-tab'
+                        data-toggle='tab'
+                        href='#nav-user-list'
+                        role='tab'
+                        aria-controls='nav-user-list'
+                        aria-selected='false'
+                      >
+                        All Request List
+                      </a>
+                    </>
+                  )}
+                  {user !== null && user.user && user.user.role === 'user' && (
+                    <>
+                      <a
+                        class='nav-item nav-link'
+                        id='nav-donate-list-tab'
+                        data-toggle='tab'
+                        href='#nav-donate-list'
+                        role='tab'
+                        aria-controls='nav-donate-list'
+                        aria-selected='false'
+                      >
+                        Donate List
+                      </a>
+                     
+                      <a
+                        class='nav-item nav-link'
+                        id='nav-user-list-tab'
+                        data-toggle='tab'
+                        href='#nav-user-list'
+                        role='tab'
+                        aria-controls='nav-user-list'
+                        aria-selected='false'
+                      >
+                        Request List
+                      </a>
+                    </>
+                  )}
                 </div>
               </nav>
               <div class='tab-content text-center m-4' id='nav-tabContent'>
@@ -131,30 +161,27 @@ const AdminDeshboard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {user !== null && user.user && user.user.role === 'admin' && (
-                        <>
-                          {allDonar.map((donar, index) => {
-                            return (
-                              <tr>
-                                <td>{index + 1}</td>
-                                <td>{donar.productName}</td>
-                                <td>{donar.productDetails}</td>
-                                <td>
+                      {user !== null &&
+                        user.user &&
+                        user.user.role === 'admin' && (
+                          <>
+                            {allDonar.map((donar, index) => {
+                              return (
+                                <tr>
+                                  <td>{index + 1}</td>
+                                  <td>{donar.productName}</td>
+                                  <td>{donar.productDetails}</td>
+                                  {/* <td>
                                   <button className='btn btn-success'>
                                     Approved
                                   </button>
-                                  {/* <button className={status ? "btn btn-warning" : "btn btn-success"} onClick={handleButton}>
-                                  {
-                                    status ? "Pending" : "Approved"
-                                  }
-                                </button> */}
-                                  {/* <button onClick={() => handleDelete(donar._id)} class="btn btn-sm btn-danger ml-2">Delete</button> */}
-                                </td>
-                              </tr>
-                            )
-                          })}
-                        </>
-                      )}
+                                  
+                                </td> */}
+                                </tr>
+                              )
+                            })}
+                          </>
+                        )}
                     </tbody>
                   </table>
                 </div>
@@ -170,46 +197,6 @@ const AdminDeshboard = () => {
                       <Test />
                     </>
                   )}
-
-                  {/* <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Index No</th>
-                        <th>Product Name</th>
-                        <th>NID</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody> */}
-                  {/* <Test/> */}
-                  {/* {
-                        allRequest.map((request, index) => {
-                          return (
-                            <>
-
-                              <tr>
-                                <td>{index + 1}</td>
-                                <td>{request.productName} </td>
-                                <td>{request.nid} </td>
-                                <td>{request.description}</td>
-                                <td>
-                                  <button className={status ? "btn btn-warning" : "btn btn-success"} onClick={handleButton}>
-                                    {
-                                      status ? "Pending" : "Approved"
-                                    }
-                                  </button>
-                                  <button onClick={() => handleRequestDelete(request._id)} class="btn btn-danger ml-2">Delete</button>
-                                </td>
-
-                              </tr>
-                            </>
-                          )
-                        })
-                      } */}
-                  {/* </tbody>
-
-                  </table> */}
                 </div>
                 <div
                   class='tab-pane fade'
@@ -221,13 +208,13 @@ const AdminDeshboard = () => {
 
                   {user !== null && user.user && user.user.role === 'user' && (
                     <>
-                      <UserRequest/>
+                      <UserRequest />
                     </>
                   )}
-                  
+
                   {user !== null && user.user && user.user.role === 'admin' && (
                     <>
-                     <AllRequest/>
+                      <AllRequest />
                     </>
                   )}
                 </div>

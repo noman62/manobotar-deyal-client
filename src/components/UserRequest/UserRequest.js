@@ -11,7 +11,9 @@ const UserRequest = () => {
   console.log(user.user.email)
 
   const getAllUser = async () => {
-    const { data } = await axios.get(`https://immense-badlands-43010.herokuapp.com/api/requests?email=${user.user.email}`)
+    const { data } = await axios.get(
+      `https://immense-badlands-43010.herokuapp.com/api/requests?email=${user.user.email}`
+    )
     setAllUser(data)
     console.log(data)
   }
@@ -27,8 +29,7 @@ const UserRequest = () => {
             <th>Name</th>
             <th>nid</th>
             <th>Reasons</th>
-
-            
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +40,17 @@ const UserRequest = () => {
                 <td>{donar.name}</td>
                 <td>{donar.nid}</td>
                 <td>{donar.reasons}</td>
+                <td>
+                  {donar.status === 'Pending' ? (
+                    <>
+                    <button className='btn btn-warning'>Pending</button>
+                    </>
+                  ) : (
+                    <>
+                     <button className='btn btn-success'>Approved</button> 
+                    </>
+                  )}
+                </td>
               </tr>
             )
           })}
