@@ -39,13 +39,13 @@ const Electronics = () => {
                                  
 
 
-                                        <span class="fa fa-star checked"></span>
+                                        {/* <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star "></span>
                                         <span class="fa fa-star"></span>
 
-                                        <span className='mx-2'>59%</span>
+                                        <span className='mx-2'>59%</span> */}
 
                                         <button class="btn m-2 btn-primary">See More </button>
                                     </div>
@@ -59,14 +59,14 @@ const Electronics = () => {
                                         <h4>{product.name}</h4>
                                  
 
-
+{/* 
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>
 
-                                        <span className='mx-2'>79%</span>
+                                        <span className='mx-2'>79%</span> */}
 
                                         <button class="btn m-2 btn-primary">See More </button>
                                     </div>
@@ -80,14 +80,14 @@ const Electronics = () => {
                                         <h4>{product.name}</h4>
                                  
 
-
+{/* 
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
 
-                                        <span className='mx-2'>99%</span>
+                                        <span className='mx-2'>99%</span> */}
 
                                         <button class="btn m-2 btn-primary">See More </button>
                                     </div>

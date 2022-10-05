@@ -106,13 +106,13 @@ const DonatePage = () => {
                     <small>{product.productDetails}</small>
                   </p>
 
-                  <span class='fa fa-star checked'></span>
+                  {/* <span class='fa fa-star checked'></span>
                   <span class='fa fa-star checked'></span>
                   <span class='fa fa-star checked'></span>
                   <span class='fa fa-star checked'></span>
                   <span class='fa fa-star'></span>
 
-                  <span className='mx-2'>39%</span>
+                  <span className='mx-2'>39%</span> */}
 
                   <button
                     onClick={() => handleProduct(product._id)}
