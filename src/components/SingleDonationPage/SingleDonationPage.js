@@ -44,12 +44,12 @@ const SingleDonationPage = () => {
             </div>
             <div class="col-sm-6">
               
-              <h4><b>Product Name:</b></h4>
+            
               <h3><b>Product Name:</b> {product.productName}</h3>
               <h4><b>Reason For Donation:</b></h4>
               <p>{product.reasons}</p>
-              <h4><b>Product Review:</b></h4>
-              <RatingStar/>
+              {/* <h4><b>Product Review:</b></h4>
+              <RatingStar/> */}
      
               {/* <a href="#" class="btn btn-primary" onClick={handleBook} >Book Now</a> */}
               <RequestModal/>
