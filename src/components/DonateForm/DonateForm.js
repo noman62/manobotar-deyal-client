@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Resizer from 'react-image-file-resizer'
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice/userSlice';
 const DonateForm = () => {
     const history = useHistory();
     const [imageURL, setImageURL] = useState(null);
@@ -14,7 +15,7 @@ const DonateForm = () => {
         email:'',
         imageURL: ''
     })
-
+    const newUser = useSelector(selectUser)
     //Handle form state
     const handleChange = e => {
         const newUserInfo = { ...user }
@@ -42,10 +43,11 @@ const DonateForm = () => {
 
       const handleSubmit = e => {
         e.preventDefault()
-    
+        if (user === null) return history.push('/login')
         axios
           .post('https://immense-badlands-43010.herokuapp.com/api/donation', {
-            ...user
+            ...user,
+            email: newUser.user.email
           })
           .then(response => {
             console.log('success', response)
@@ -76,50 +78,6 @@ const DonateForm = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    {/* <div class="form-group col-md-8">
-                        <select id="inputBatch" class="form-control form-control-sm"
-                            name='batchName'
-                            onChange={handleChange}
-                        >
-                            <option selected>Choose...</option>
-                            <option>ALL Products</option>
-                            <option>Electronics</option>
-                            <option>Clothes </option>
-                        </select>
-                    </div> */}
-                    {/* <div class="d-flex form-group col-md-8">
-                        <div class="form-check">
-                            <input class="form-check-input" name='yes' type="radio" value="1" id="flexCheckDefault"
-                                onClick={handleRadioButton}
-
-                            />
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="form-check ml-3">
-                            <input class="form-check-input" type="radio" name='yes' value="0" id="flexCheckChecked"
-                                onClick={() => setVisible(false)}
-
-                            />
-                            <label class="form-check-label" for="flexCheckChecked">
-                                No
-                            </label>
-
-                        </div>
-
-                    </div> */}
-
-                
-                    {/* <div class="form-group col-md-8">
-                        {
-                            visible &&
-                            <textarea class="form-control" required placeholder="Reason" id="" cols="30" rows="3"
-                                name='pr'
-
-                            ></textarea>
-                        }
-                    </div> */}
                     <div class="form-group col-md-8">
                         <label for="inputproductdetails">Product Details</label>
                         <textarea class="form-control" required placeholder="Product Model, EMI number etc" id="" cols="30" rows="3"
@@ -134,13 +92,6 @@ const DonateForm = () => {
                             name='reasons'
                             onChange={handleChange}
                         ></textarea>
-                    </div>
-                    <div class="form-group col-md-8">
-                        <label for="inputproductname">Email</label>
-                        <input type="text" required class="form-control" id="inputAddress" placeholder="Laptop/mobile"
-                            name='email'
-                            onChange={handleChange}
-                        />
                     </div>
                     <div class="form-group col-md-8">
 
