@@ -1,36 +1,18 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice/userSlice'
+import AllDonation from '../AllDonation/AllDonatoin'
 import AllRequest from '../AllRequest/AllRequest'
 import Test from '../Test/Test'
+import UserDonation from '../UserDonation/UserDonation'
 import UserRequest from '../UserRequest/UserRequest'
 
 const AdminDeshboard = () => {
-  const [allDonar, setAllDonar] = useState([])
-
-  const [status, setStatus] = useState(true)
+ 
 
   const user = useSelector(selectUser)
 
-  const getAppointments = async () => {
-    const { data } = await axios.get(
-      'https://immense-badlands-43010.herokuapp.com/api/donations'
-    )
-    setAllDonar(data)
-    console.log(data)
-  }
+ 
 
-  useEffect(() => {
-    getAppointments()
-  }, [])
-  const handleButton = () => {
-    if (status) {
-      setStatus(false)
-    } else {
-      setStatus(true)
-    }
-  }
   return (
     <div>
       <div class='pill2'>
@@ -151,39 +133,18 @@ const AdminDeshboard = () => {
                 >
                   <h3>Donation List</h3>
 
-                  <table class='table'>
-                    <thead>
-                      <tr>
-                        <th>Index No</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {user !== null &&
-                        user.user &&
-                        user.user.role === 'admin' && (
-                          <>
-                            {allDonar.map((donar, index) => {
-                              return (
-                                <tr>
-                                  <td>{index + 1}</td>
-                                  <td>{donar.productName}</td>
-                                  <td>{donar.productDetails}</td>
-                                  {/* <td>
-                                  <button className='btn btn-success'>
-                                    Approved
-                                  </button>
-                                  
-                                </td> */}
-                                </tr>
-                              )
-                            })}
-                          </>
-                        )}
-                    </tbody>
-                  </table>
+                  {user !== null && user.user && user.user.role === 'user' && (
+                    <>
+                      <UserDonation/>
+                    </>
+                  )}
+
+                  {user !== null && user.user && user.user.role === 'admin' && (
+                    <>
+                      <AllDonation/>
+                    </>
+                  )}
+                   
                 </div>
                 <div
                   class='tab-pane fade'

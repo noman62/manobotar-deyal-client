@@ -100,7 +100,7 @@ const DonatePage = () => {
             return (
               <div class='col-md-3  mb-3 col-sm-6 '>
                 <div class='product-d   text-center'>
-                  <img class=' w-100' src={product.imageURL} alt='' />
+                  <img class='h-50  w-100' src={product.imageURL} alt='' />
                   <h4>{product.productName}</h4>
                   <p>
                     <small>{product.productDetails}</small>
