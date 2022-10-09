@@ -1,3 +1,4 @@
+import { SyncOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import React, { useState} from 'react'
 import { useHistory } from 'react-router-dom'
@@ -12,7 +13,7 @@ const SignUp = () => {
     //   nid:'',
       password: ''
     })
-  
+    const [loading, setLoading] = useState(false)
     //Handle form state
     const handleChange = e => {
       const newUserInfo = { ...user }
@@ -22,13 +23,16 @@ const SignUp = () => {
     //Handle Form Submit
     const handleSubmit = e => {
       e.preventDefault()
-  
+      setLoading(true)
       axios
         .post('https://immense-badlands-43010.herokuapp.com/api/register', {
           ...user
         })
         .then(response => {
           console.log('success', response)
+          setTimeout(() => {
+            setLoading(false)
+          }, 1000)
           history.push('login')
         })
         .catch(error => {
@@ -96,7 +100,7 @@ const SignUp = () => {
               type='submit'
               className='btn btn-success btn-lg btn-block signin-btn'
             >
-              Sign Up
+             {loading ? <SyncOutlined spin /> : 'SUBMIT'}
             </button>
           </div>
           <div className='text-center small'>
