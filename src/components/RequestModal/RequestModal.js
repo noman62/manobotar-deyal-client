@@ -1,4 +1,5 @@
 
+import { SyncOutlined } from '@ant-design/icons'
 import axios from 'axios'
 import React, { useState } from 'react'
 import {  useSelector } from 'react-redux'
@@ -7,12 +8,14 @@ import { selectUser } from '../../features/userSlice/userSlice'
 
 const RequestModal = () => {
   const history = useHistory()
+  const [loading, setLoading] = useState(false)
   const [request, setRequest] = useState({
     name: '',
     nid: '',
     email: '',
     reasons: ''
   })
+
   const user = useSelector(selectUser)
 
   const handleChange = e => {
@@ -23,6 +26,7 @@ const RequestModal = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    setLoading(true)
     if (user === null) return history.push('/login')
 
     axios
@@ -32,6 +36,9 @@ const RequestModal = () => {
       })
       .then(response => {
         console.log('success', response)
+        setTimeout(() => {
+          setLoading(false)
+        }, 2000)
         
         history.push('/home')
       })
@@ -126,7 +133,7 @@ const RequestModal = () => {
                 <div className='form-row'>
                   <div className='form-group col-md-12 text-center'>
                     <button type='submit' className=' btn btn-info w-50'>
-                      Submit{' '}
+                    {loading ? <SyncOutlined spin /> : 'SUBMIT'}
                     </button>
                   </div>
                 </div>

@@ -48,10 +48,7 @@ const Login = () => {
           history.push('home')
         }
       })
-    //   .catch(error => {
-    // 	console.log("noman")
-    //     console.log(error.response)
-    //   })
+    
   }
   return (
     <div>
