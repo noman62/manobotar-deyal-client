@@ -23,7 +23,7 @@ const Login = () => {
     newUserInfo[e.target.name] = e.target.value
     setUser(newUserInfo)
   }
-  //Handle Form Submit
+  
   const handleSubmit = e => {
     e.preventDefault()
     setLoading(true)
