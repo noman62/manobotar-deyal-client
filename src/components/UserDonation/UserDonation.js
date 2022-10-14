@@ -38,7 +38,7 @@ const UserDonation = () => {
                 <td>{index + 1}</td>
                 <td>{donar.productName}</td>
                 <td>{donar.reasons}</td>
-                <td>{donar.status}</td>
+                {/* <td>{donar.status}</td> */}
                 <td>
                   {donar.status === 'Pending' ? (
                     <>

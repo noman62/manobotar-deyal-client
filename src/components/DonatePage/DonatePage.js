@@ -98,30 +98,35 @@ const DonatePage = () => {
         <div class='row p-4'>
           {appointmentInfo.map((product, index) => {
             return (
-              <div class='col-md-3  mb-3 col-sm-6 '>
-                <div class='product-d   text-center'>
-                  <img class='h-50  w-100' src={product.imageURL} alt='' />
-                  <h4>{product.productName}</h4>
-                  <p>
-                    <small>{product.productDetails}</small>
-                  </p>
+              <>
+                {product.status === 'Pending' ? (
+                  <>
+                  </>
+                ) : (
+                  <>
+                    <div class='col-md-3  mb-3 col-sm-6 '>
+                      <div class='product-d   text-center'>
+                        <img
+                          class='h-50  w-100'
+                          src={product.imageURL}
+                          alt=''
+                        />
+                        <h4>{product.productName}</h4>
+                        <p>
+                          <small>{product.productDetails}</small>
+                        </p>
 
-                  {/* <span class='fa fa-star checked'></span>
-                  <span class='fa fa-star checked'></span>
-                  <span class='fa fa-star checked'></span>
-                  <span class='fa fa-star checked'></span>
-                  <span class='fa fa-star'></span>
-
-                  <span className='mx-2'>39%</span> */}
-
-                  <button
-                    onClick={() => handleProduct(product._id)}
-                    class='btn m-2 btn-primary'
-                  >
-                    See More{' '}
-                  </button>
-                </div>
-              </div>
+                        <button
+                          onClick={() => handleProduct(product._id)}
+                          class='btn m-2 btn-primary'
+                        >
+                          See More{' '}
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </>
             )
           })}
         </div>
