@@ -9,7 +9,6 @@ const Form = () => {
   const history = useHistory()
   const [request, setRequest] = useState({
     name: '',
-    nid: '',
     email: '',
     reasons: ''
   })
@@ -62,22 +61,7 @@ const Form = () => {
                   />
                 </div>
               </div>
-              <div className='form-row'>
-                <div className='form-group col-md-12'>
-                  <label for='short-title'>NID Number</label>
-                  <input
-                    type='number'
-                    className='form-control form-control-sm'
-                    id='short-title'
-                    required
-                    placeholder='Type NID Number'
-                    onChange={handleChange}
-                    name='nid'
-                    //   onChange={handleChange}
-                    defaultValue=''
-                  />
-                </div>
-              </div>
+         
 
               <div class='form-row'>
                 <div class='form-group col-md-12'>
