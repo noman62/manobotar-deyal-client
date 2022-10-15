@@ -27,7 +27,7 @@ const UserRequest = () => {
           <tr>
             <th>Index No</th>
             <th>Name</th>
-            <th>nid</th>
+            {/* <th>nid</th> */}
             <th>Reasons</th>
             <th>Status</th>
           </tr>
@@ -38,7 +38,7 @@ const UserRequest = () => {
               <tr>
                 <td>{index + 1}</td>
                 <td>{donar.name}</td>
-                <td>{donar.nid}</td>
+                {/* <td>{donar.nid}</td> */}
                 <td>{donar.reasons}</td>
                 <td>
                   {donar.status === 'Pending' ? (

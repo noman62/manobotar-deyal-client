@@ -22,22 +22,36 @@ const AllDonation = () => {
   useEffect(() => {
     getAllUser()
   }, [])
-  const updateStatus=async(id)=>{
-    console.log(id);
+  const updateStatus = async id => {
+    console.log(id)
     axios
-    .put(
-      `https://immense-badlands-43010.herokuapp.com/api/update/${id}`,
-      { withCredentials: true }
+      .put(`https://immense-badlands-43010.herokuapp.com/api/update/${id}`, {
+        withCredentials: true
+      })
+      .then(res => {
+        console.log('success', res)
+        window.location.reload(false)
+        history.push('admindeshboard')
+      })
+      .catch(error => {
+        console.log(error.response)
+      })
+  }
+
+  const handleDelete = id => {
+    fetch(
+      `https://immense-badlands-43010.herokuapp.com/api/deleteDonation/${id}`,
+      {
+        method: 'DELETE'
+      }
     )
-    .then(res => {
-      console.log('success', res)
-      window.location.reload(false);
-      history.push('admindeshboard')
-    })
-    .catch(error => {
-     
-      console.log(error.response)
-    })
+      .then(res => res.json())
+      .then(result => {
+        if (result) {
+          window.location.reload(false)
+          history.push('admindeshboard')
+        }
+      })
   }
   return (
     <div>
@@ -49,6 +63,7 @@ const AllDonation = () => {
             <th>Product Name</th>
             <th>Reasons</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -63,13 +78,26 @@ const AllDonation = () => {
                 <td>
                   {donar.status === 'Pending' ? (
                     <>
-                    <button onClick={()=>updateStatus(donar._id)} className='btn btn-warning'>Pending</button>
+                      <button
+                        onClick={() => updateStatus(donar._id)}
+                        className='btn btn-warning'
+                      >
+                        Pending
+                      </button>
                     </>
                   ) : (
                     <>
-                     <button  className='btn btn-success'>Approved</button> 
+                      <button className='btn btn-success'>Approved</button>
                     </>
                   )}
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(donar._id)}
+                    className='btn btn-warning ml-2'
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             )

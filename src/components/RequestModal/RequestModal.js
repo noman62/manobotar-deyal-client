@@ -11,7 +11,6 @@ const RequestModal = () => {
   const [loading, setLoading] = useState(false)
   const [request, setRequest] = useState({
     name: '',
-    nid: '',
     email: '',
     reasons: ''
   })
@@ -32,6 +31,7 @@ const RequestModal = () => {
     axios
       .post('https://immense-badlands-43010.herokuapp.com/api/request', {
         ...request,
+        name:user.user.name,
         email: user.user.email
       })
       .then(response => {
@@ -83,7 +83,7 @@ const RequestModal = () => {
             <div class='modal-body'>
               <form className='upload-form' onSubmit={handleSubmit}>
             
-                <div className='form-row'>
+                {/* <div className='form-row'>
                   <div className='form-group col-md-12'>
                     <label for='notice-number'>Product name</label>
                     <input
@@ -98,8 +98,8 @@ const RequestModal = () => {
                       defaultValue=''
                     />
                   </div>
-                </div>
-                <div className='form-row'>
+                </div> */}
+                {/* <div className='form-row'>
                   <div className='form-group col-md-12'>
                     <label for='short-title'>NID Number</label>
                     <input
@@ -114,7 +114,7 @@ const RequestModal = () => {
                       defaultValue=''
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div class='form-row'>
                   <div class='form-group col-md-12'>
