@@ -7,11 +7,7 @@ import UserDonation from '../UserDonation/UserDonation'
 import UserRequest from '../UserRequest/UserRequest'
 
 const AdminDeshboard = () => {
- 
-
   const user = useSelector(selectUser)
-
- 
 
   return (
     <div>
@@ -83,7 +79,7 @@ const AdminDeshboard = () => {
                       >
                         Donate List
                       </a>
-                     
+
                       <a
                         class='nav-item nav-link'
                         id='nav-user-list-tab'
@@ -114,22 +110,44 @@ const AdminDeshboard = () => {
                   />
                   <table class='table'>
                     <tbody>
-                      <tr>
-                        <th>Name</th>
-                        <td>{user?.user?.name}</td>
-                      </tr>
-                      <tr>
-                        <th>Email</th>
-                        <td>{user?.user?.email}</td>
-                      </tr>
-                      <tr>
-                        <th>mobile</th>
-                        <td>{user?.user?.mobile}</td>
-                      </tr>
-                      <tr>
-                        <th>Email</th>
-                        <td>{user?.user?.address}</td>
-                      </tr>
+                      {user !== null &&
+                        user.user &&
+                        user.user.role === 'admin' && (
+                          <>
+                            <tr>
+                              <th>Name</th>
+                              <td>{user?.user?.name}</td>
+                            </tr>
+                            <tr>
+                              <th>Email</th>
+                              <td>{user?.user?.email}</td>
+                            </tr>
+
+                          </>
+                        )}
+                      {user !== null &&
+                        user.user &&
+                        user.user.role === 'user' && (
+                          <>
+                            <tr>
+                              <th>Name</th>
+                              <td>{user?.user?.name}</td>
+                            </tr>
+                            <tr>
+                              <th>Email</th>
+                              <td>{user?.user?.email}</td>
+                            </tr>
+
+                            <tr>
+                              <th>mobile</th>
+                              <td>{user?.user?.mobile}</td>
+                            </tr>
+                            <tr>
+                              <th>Address</th>
+                              <td>{user?.user?.address}</td>
+                            </tr>
+                          </>
+                        )}
                     </tbody>
                   </table>
                 </div>
@@ -143,16 +161,15 @@ const AdminDeshboard = () => {
 
                   {user !== null && user.user && user.user.role === 'user' && (
                     <>
-                      <UserDonation/>
+                      <UserDonation />
                     </>
                   )}
 
                   {user !== null && user.user && user.user.role === 'admin' && (
                     <>
-                      <AllDonation/>
+                      <AllDonation />
                     </>
                   )}
-                   
                 </div>
                 <div
                   class='tab-pane fade'

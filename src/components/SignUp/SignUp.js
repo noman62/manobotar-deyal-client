@@ -9,7 +9,7 @@ const SignUp = () => {
     const [user, setUser] = useState({
       name: '',
       email: '',
-      number:'',
+      mobile:'',
       address:'',
       password: ''
     })
@@ -68,7 +68,7 @@ const SignUp = () => {
             <input
               type='number'
               class='form-control input-lg'
-              name='number'
+              name='mobile'
               placeholder='Phone Number'
               onChange={handleChange}
               

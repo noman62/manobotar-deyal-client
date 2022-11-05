@@ -14,6 +14,7 @@ const RequestModal = () => {
     name:'',
     imageURL: '',
     address:'',
+    reference:'',
     email: '',
     reasons: ''
   })
@@ -53,7 +54,9 @@ const RequestModal = () => {
       .post('https://immense-badlands-43010.herokuapp.com/api/request', {
         ...request,
         name:user.user.name,
-        email: user.user.email
+        email: user.user.email,
+        address:user.user.address,
+
       })
       .then(response => {
         console.log('success', response)
@@ -121,15 +124,15 @@ const RequestModal = () => {
                 </div>
                 <div className='form-row'>
                   <div className='form-group col-md-12'>
-                    <label for='short-title'>Address</label>
+                    <label for='short-title'>Reference</label>
                     <input
                       type='text'
                       className='form-control form-control-sm'
                       id='short-title'
                       required
-                      placeholder='Type Address'
+                      placeholder='Type Reference'
                       onChange={handleChange}
-                      name='address'
+                      name='reference'
                       defaultValue=''
                     />
                   </div>

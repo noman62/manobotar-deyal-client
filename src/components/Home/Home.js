@@ -17,7 +17,7 @@ const Home = () => {
                         <p>
                         If you want to buy something , which you can't effort.You can make a request. If you want to give away something ,which you don't use or need anymore.You can donate also.
                         </p>
-                        <a class="btn btn-primary px-4 create-button" href="#">Get Started</a>
+                        <a class="btn btn-primary px-4 create-button" href="/donatepage">Get Started</a>
                     </div>
                     <div class="col-sm-6 text-center">
                         <img class="w-100" src="images/bProject.png" alt="" />
