@@ -122,6 +122,14 @@ const AdminDeshboard = () => {
                         <th>Email</th>
                         <td>{user?.user?.email}</td>
                       </tr>
+                      <tr>
+                        <th>mobile</th>
+                        <td>{user?.user?.mobile}</td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                        <td>{user?.user?.address}</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

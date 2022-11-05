@@ -2,10 +2,11 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const Test = () => {
   const [allUser, setAllUser] = useState([])
-
+  const history = useHistory()
   const getAllUser = async () => {
     const { data } = await axios.get('https://immense-badlands-43010.herokuapp.com/api/allUser')
     setAllUser(data)
@@ -14,14 +15,31 @@ const Test = () => {
   useEffect(() => {
     getAllUser()
   }, [])
+  const handleDelete = id => {
+    fetch(
+      `https://immense-badlands-43010.herokuapp.com/api/delete/${id}`,
+      {
+        method: 'DELETE'
+      }
+    )
+      .then(res => res.json())
+      .then(result => {
+        if (result) {
+          window.location.reload(false)
+          history.push('admindeshboard')
+        }
+      })
+  }
   return (
     <div>
       <table class='table'>
         <thead>
           <tr>
-            <th>Index No</th>
+            <th>SN</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
             
           </tr>
         </thead>
@@ -32,6 +50,17 @@ const Test = () => {
                 <td>{index + 1}</td>
                 <td>{donar.name}</td>
                 <td>{donar.email}</td>
+                <td>{donar.mobile}</td>
+                <td>{donar.address}</td>
+
+                <td>
+                  <button
+                    onClick={() => handleDelete(donar._id)}
+                    className='btn btn-danger ml-2'
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             )
           })}

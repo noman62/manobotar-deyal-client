@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { selectUser } from '../../features/userSlice/userSlice'
-
+import createHistory from 'history/createBrowserHistory'
 const AllRequest = () => {
   const [allUser, setAllUser] = useState([])
   const user = useSelector(selectUser)
@@ -29,8 +29,12 @@ const AllRequest = () => {
       )
       .then(res => {
         console.log('success', res)
-        window.location.reload(false)
-        history.push('admindeshboard')
+        // window.location.reload(false)
+
+        // history.push('admindeshboard')
+        window.alert("Approved Successfully")
+        const history = createHistory()
+        history.go(0)
       })
       .catch(error => {
         console.log(error.response)
@@ -46,8 +50,10 @@ const AllRequest = () => {
       .then(res => res.json())
       .then(result => {
         if (result) {
-          window.location.reload(false)
-          history.push('admindeshboard')
+          // window.location.reload(false)
+          // history.push('admindeshboard')
+          const history = createHistory()
+          history.go(0)
         }
       })
   }
@@ -56,22 +62,26 @@ const AllRequest = () => {
       <table class='table'>
         <thead>
           <tr>
-            <th>Index No</th>
+          <th>SN</th>
             <th>Email</th>
-            {/* <th>nid</th> */}
+            <th>Address</th>
             <th>Reasons</th>
+            <th>Income certificate</th>
             <th>Status</th>
-            <th></th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           {allUser.map((donar, index) => {
             return (
               <tr>
-                <td>{index + 1}</td>
+                <td>{index+1}</td>
                 <td>{donar.email}</td>
-                {/* <td>{donar.nid}</td> */}
+                <td>{donar.address}</td>
                 <td>{donar.reasons}</td>
+                <a href={donar.imageURL}>
+                  <td>View Link</td>
+                </a>
                 <td>
                   {donar.status === 'Pending' ? (
                     <>
@@ -87,14 +97,16 @@ const AllRequest = () => {
                       <button className='btn btn-success'>Approved</button>
                     </>
                   )}
+                </td>
+                <td>
+                  {' '}
                   <button
                     onClick={() => handleDelete(donar._id)}
-                    className='btn btn-warning ml-2'
+                    className='btn btn-danger ml-2'
                   >
                     Delete
                   </button>
                 </td>
-                <td></td>
               </tr>
             )
           })}

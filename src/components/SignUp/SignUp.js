@@ -9,8 +9,8 @@ const SignUp = () => {
     const [user, setUser] = useState({
       name: '',
       email: '',
-    //   number:'',
-    //   nid:'',
+      number:'',
+      address:'',
       password: ''
     })
     const [loading, setLoading] = useState(false)
@@ -64,26 +64,26 @@ const SignUp = () => {
              
             />
           </div>
-          {/* <div className='form-group'>
+          <div className='form-group'>
             <input
-              type='text'
+              type='number'
               class='form-control input-lg'
               name='number'
               placeholder='Phone Number'
               onChange={handleChange}
               
             />
-          </div> */}
-          {/* <div className='form-group'>
+          </div>
+          <div className='form-group'>
             <input
               type='text'
               class='form-control input-lg'
-              name='nid'
-              placeholder='Enter NID Number'
+              name='address'
+              placeholder='Enter Your Address'
               onChange={handleChange}
               
             />
-          </div> */}
+          </div>
     
           <div className='form-group'>
             <input

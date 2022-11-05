@@ -30,6 +30,7 @@ const AllDonation = () => {
       })
       .then(res => {
         console.log('success', res)
+        window.alert("approved Successfully")
         window.location.reload(false)
         history.push('admindeshboard')
       })
@@ -94,7 +95,7 @@ const AllDonation = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(donar._id)}
-                    className='btn btn-warning ml-2'
+                    className='btn btn-danger ml-2'
                   >
                     Delete
                   </button>

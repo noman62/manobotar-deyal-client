@@ -8,9 +8,12 @@ import { selectUser } from '../../features/userSlice/userSlice'
 
 const RequestModal = () => {
   const history = useHistory()
+  const [imageURL, setImageURL] = useState(null)
   const [loading, setLoading] = useState(false)
   const [request, setRequest] = useState({
-    name: '',
+    name:'',
+    imageURL: '',
+    address:'',
     email: '',
     reasons: ''
   })
@@ -21,6 +24,24 @@ const RequestModal = () => {
     const newRequestInfo = { ...request }
     newRequestInfo[e.target.name] = e.target.value
     setRequest(newRequestInfo)
+  }
+
+  const handleImageUpload = event => {
+    console.log(event.target.files)
+    const imageData = new FormData()
+    imageData.set('key', '668f9a81c863630a432f6a4184904575')
+    imageData.append('image', event.target.files[0])
+
+    axios
+      .post('https://api.imgbb.com/1/upload', imageData)
+      .then(res => {
+        console.log(res.data.data.display_url)
+        setImageURL(res.data.data.display_url)
+        setRequest({ ...request, imageURL: res.data.data.display_url })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   const handleSubmit = async e => {
@@ -83,38 +104,36 @@ const RequestModal = () => {
             <div class='modal-body'>
               <form className='upload-form' onSubmit={handleSubmit}>
             
-                {/* <div className='form-row'>
+                <div className='form-row'>
                   <div className='form-group col-md-12'>
-                    <label for='notice-number'>Product name</label>
+                    <label for='notice-number'>Income certificate</label>
                     <input
-                      type='text'
+                      type='file'
                       className='form-control form-control-sm'
                       id='notice-number'
                       required
-                      placeholder='Type Product name'
-                      onChange={handleChange}
-                      name='name'
-                      //   onChange={handleChange}
+                      multiple
+                      name='imageURL'
+                      onChange={handleImageUpload}
                       defaultValue=''
                     />
                   </div>
-                </div> */}
-                {/* <div className='form-row'>
+                </div>
+                <div className='form-row'>
                   <div className='form-group col-md-12'>
-                    <label for='short-title'>NID Number</label>
+                    <label for='short-title'>Address</label>
                     <input
-                      type='number'
+                      type='text'
                       className='form-control form-control-sm'
                       id='short-title'
                       required
-                      placeholder='Type NID Number'
+                      placeholder='Type Address'
                       onChange={handleChange}
-                      name='nid'
-                      //   onChange={handleChange}
+                      name='address'
                       defaultValue=''
                     />
                   </div>
-                </div> */}
+                </div>
 
                 <div class='form-row'>
                   <div class='form-group col-md-12'>
