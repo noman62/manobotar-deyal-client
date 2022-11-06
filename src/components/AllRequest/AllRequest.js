@@ -52,6 +52,7 @@ const AllRequest = () => {
         if (result) {
           // window.location.reload(false)
           // history.push('admindeshboard')
+          window.alert("delete successfully")
           const history = createHistory()
           history.go(0)
         }

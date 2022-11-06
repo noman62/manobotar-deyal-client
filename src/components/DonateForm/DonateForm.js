@@ -72,17 +72,18 @@ const DonateForm = () => {
               required
               class='form-control'
               id='inputAddress'
-              placeholder='Laptop/mobile'
+              placeholder='Enter Product Name'
               name='productName'
               onChange={handleChange}
             />
           </div>
+         
           <div class='form-group col-md-8'>
-            <label for='inputproductdetails'>Product Details</label>
+            <label for='inputproductdetails'>Product Type</label>
             <textarea
               class='form-control'
               required
-              placeholder='Product Model, EMI number etc'
+              placeholder='Type product type like laptop or cloth or food'
               id=''
               cols='30'
               rows='3'

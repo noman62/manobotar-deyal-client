@@ -27,6 +27,7 @@ const Test = () => {
       .then(res => res.json())
       .then(result => {
         if (result) {
+          window.alert("Approved delete successfully")
           window.location.reload(false)
           history.push('admindeshboard')
         }

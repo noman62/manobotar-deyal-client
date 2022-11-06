@@ -49,6 +49,7 @@ const AllDonation = () => {
       .then(res => res.json())
       .then(result => {
         if (result) {
+          window.alert("delete successfully")
           window.location.reload(false)
           history.push('admindeshboard')
         }

@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { selectStatus } from '../../features/requestSlice/requestSlice'
-import { FaStar } from 'react-icons/fa'
 import './DonatePage.css'
 import axios from 'axios'
 
 const DonatePage = () => {
-  const [donateProducts, setDonateProducts] = useState([])
-  // const requestStatus = useSelector(selectStatus)
-  // console.log(requestStatus);
+  const [serachItem, setSearchItem] = useState('')
+  
   let history = useHistory()
   const [appointmentInfo, setAppointmentInfo] = useState([])
 
@@ -17,29 +13,37 @@ const DonatePage = () => {
     const { data } = await axios.get(
       'https://immense-badlands-43010.herokuapp.com/api/donations'
     )
+
     setAppointmentInfo(data)
-    console.log(data)
+  }
+  const getFilterInfo = product => {
+    const updateItem = appointmentInfo.filter(item => {
+      return item.productDetails === product
+    })
+    console.log(updateItem)
+    setAppointmentInfo(updateItem)
   }
 
   useEffect(() => {
     getAppointments()
   }, [])
+
+  const filterItem = data => {
+    console.log(data)
+    getFilterInfo(data)
+  }
   const handleProduct = singleId => {
     history.push(`/singledonationpage/${singleId}`)
   }
+  const searchRecord=async()=>{
+    
+    const { data } = await axios.get(
+      `https://immense-badlands-43010.herokuapp.com/api/search?productName=${serachItem}`
+    )
+   
+    setAppointmentInfo(data)
+  }
 
-  const stars = Array(5).fill(0)
-  const [currentValue, setCurrentValue] = useState(0)
-  const [hoverValue, setHoverValue] = useState(undefined)
-  const handleClick = value => {
-    setCurrentValue(value)
-  }
-  const handleMouseHover = value => {
-    setHoverValue(value)
-  }
-  const handleMouseLeave = () => {
-    setHoverValue(undefined)
-  }
   return (
     <div>
       <div class='container-fluid   d-flex  '>
@@ -48,24 +52,9 @@ const DonatePage = () => {
             <div class='catagory-list'>
               <h2>Catagory List</h2>
               <ul>
-                {/* <li>
-              <a class="cat-link" href="#">All</a>
-              </li> */}
-                <li>
-                  <a class='cat-link' href='cloth'>
-                    Winter Clothes
-                  </a>
-                </li>
-                <li>
-                  <a class='cat-link' href='electronic'>
-                    Electric Device
-                  </a>
-                </li>
-                <li>
-                  <a class='cat-link' href='food'>
-                    Food
-                  </a>
-                </li>
+                <li onClick={() => filterItem('cloth')}>Winter Clothes</li>
+                <li onClick={() => filterItem('laptop')}>Electric Device</li>
+                <li onClick={() => filterItem('food')}>Food</li>
               </ul>
             </div>
           </div>
@@ -95,13 +84,33 @@ const DonatePage = () => {
             </h1>
           </div>
         </div>
+        <div class='row'>
+          <div class='col-md-3'></div>
+          <div class='col-md-6'>
+            <div class='input-group mb-3'>
+              <input
+                type='text'
+                class='form-control'
+                placeholder="Search By Name"
+                aria-label="Recipient's username"
+                aria-describedby='basic-addon2'
+                onChange={e=>{setSearchItem(e.target.value)}}
+              />
+              <div class='input-group-append'>
+                <button class='btn btn-success' onClick={searchRecord} type='button'>
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-3'></div>
+        </div>
         <div class='row p-4'>
           {appointmentInfo.map((product, index) => {
             return (
               <>
                 {product.status === 'Pending' ? (
-                  <>
-                  </>
+                  <></>
                 ) : (
                   <>
                     <div class='col-md-3  mb-3 col-sm-6 '>
@@ -111,9 +120,9 @@ const DonatePage = () => {
                           src={product.imageURL}
                           alt=''
                         />
-                        <h4>{product.productName}</h4>
+                        
                         <p>
-                          <small>{product.productDetails}</small>
+                        <p>{product.productName}</p>
                         </p>
 
                         <button
@@ -131,9 +140,7 @@ const DonatePage = () => {
           })}
         </div>
         <div class='row '>
-          <div class='col-sm-12 m-3 text-center'>
-            <a class='btn btn-primary'>More Donation</a>
-          </div>
+         
         </div>
       </div>
     </div>
