@@ -55,6 +55,10 @@ const DonatePage = () => {
                 <li onClick={() => filterItem('cloth')}>Winter Clothes</li>
                 <li onClick={() => filterItem('laptop')}>Electric Device</li>
                 <li onClick={() => filterItem('food')}>Food</li>
+                <li onClick={() => filterItem('home-appliances')}>Home & Appliances</li>
+                <li onClick={() => filterItem('sports')}>Sports & Outdoors</li>
+                <li onClick={() => filterItem('vehicle')}>Vehicle</li>
+
               </ul>
             </div>
           </div>

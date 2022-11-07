@@ -77,19 +77,25 @@ const DonateForm = () => {
               onChange={handleChange}
             />
           </div>
+
          
           <div class='form-group col-md-8'>
-            <label for='inputproductdetails'>Product Type</label>
-            <textarea
-              class='form-control'
-              required
-              placeholder='Type product type like laptop or cloth or food'
-              id=''
-              cols='30'
-              rows='3'
+            <select
+              class='form-select'
+              aria-label='Default select example'
               name='productDetails'
               onChange={handleChange}
-            ></textarea>
+            >
+              <option selected>Select Product Type</option>
+              <option >food</option>
+              <option >cloth</option>
+              <option >laptop</option>
+              <option >electric</option>
+              <option >home-appliances</option>
+              <option >sports</option>
+              <option >vehicle</option>
+
+            </select>
           </div>
           <div class='form-group col-md-8'>
             <label for='inputproductreason'>Reasons For Donaton</label>
