@@ -45,7 +45,7 @@ const DonateForm = () => {
     setLoading(true)
     if (user === null) return history.push('/login')
     axios
-      .post('https://immense-badlands-43010.herokuapp.com/api/donation', {
+      .post('https://manobotar-deyal-backend.onrender.com/api/donation', {
         ...user,
         email: newUser.user.email
       })

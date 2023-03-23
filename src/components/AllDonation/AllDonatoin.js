@@ -14,7 +14,7 @@ const AllDonation = () => {
 
   const getAllUser = async () => {
     const { data } = await axios.get(
-      'https://immense-badlands-43010.herokuapp.com/api/donations'
+      'https://manobotar-deyal-backend.onrender.com/api/donations'
     )
     setAllUser(data)
     console.log(data)
@@ -25,7 +25,7 @@ const AllDonation = () => {
   const updateStatus = async id => {
     console.log(id)
     axios
-      .put(`https://immense-badlands-43010.herokuapp.com/api/update/${id}`, {
+      .put(`https://manobotar-deyal-backend.onrender.com/api/update/${id}`, {
         withCredentials: true
       })
       .then(res => {
@@ -41,7 +41,7 @@ const AllDonation = () => {
 
   const handleDelete = id => {
     fetch(
-      `https://immense-badlands-43010.herokuapp.com/api/deleteDonation/${id}`,
+      `https://manobotar-deyal-backend.onrender.com/api/deleteDonation/${id}`,
       {
         method: 'DELETE'
       }

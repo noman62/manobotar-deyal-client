@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
             <div class="row">
                 <div class="col-sm-12 pb-0 text-center">
-                    <p><small> &copy; 2022 Bismoy Project</small></p>
+                    <p><small> &copy; 2022 Noman Project</small></p>
                 </div>
             </div>
         </div>

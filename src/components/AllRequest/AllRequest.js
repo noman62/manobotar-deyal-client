@@ -12,7 +12,7 @@ const AllRequest = () => {
   const history = useHistory()
   const getAllUser = async () => {
     const { data } = await axios.get(
-      'https://immense-badlands-43010.herokuapp.com/api/allrequest'
+      'https://manobotar-deyal-backend.onrender.com/api/allrequest'
     )
     setAllUser(data)
     console.log(data)
@@ -24,7 +24,7 @@ const AllRequest = () => {
     console.log(id)
     axios
       .put(
-        `https://immense-badlands-43010.herokuapp.com/api/updateRequest/${id}`,
+        `https://manobotar-deyal-backend.onrender.com/api/updateRequest/${id}`,
         { withCredentials: true }
       )
       .then(res => {
@@ -42,7 +42,7 @@ const AllRequest = () => {
   }
   const handleDelete = id => {
     fetch(
-      `https://immense-badlands-43010.herokuapp.com/api/deleteRequest/${id}`,
+      `https://manobotar-deyal-backend.onrender.com/api/deleteRequest/${id}`,
       {
         method: 'DELETE'
       }

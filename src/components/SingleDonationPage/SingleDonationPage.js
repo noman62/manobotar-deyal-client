@@ -15,7 +15,7 @@ const SingleDonationPage = () => {
   useEffect(() => {
     const getDonation = async () => {
       const { data } = await axios.get(
-        `https://immense-badlands-43010.herokuapp.com/api/donation/${singleId}`
+        `https://manobotar-deyal-backend.onrender.com/api/donation/${singleId}`
       )
       setProduct(data)
       // console.log(data)

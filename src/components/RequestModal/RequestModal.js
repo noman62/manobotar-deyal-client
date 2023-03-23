@@ -51,7 +51,7 @@ const RequestModal = () => {
     if (user === null) return history.push('/login')
 
     axios
-      .post('https://immense-badlands-43010.herokuapp.com/api/request', {
+      .post('https://manobotar-deyal-backend.onrender.com/api/request', {
         ...request,
         name:user.user.name,
         email: user.user.email,

@@ -25,7 +25,7 @@ const Form = () => {
     if (user === null) return history.push('/login')
 
     axios
-      .post('https://immense-badlands-43010.herokuapp.com/api/request', {
+      .post('https://manobotar-deyal-backend.onrender.com/api/request', {
         ...request,
         email: user.user.email
       })

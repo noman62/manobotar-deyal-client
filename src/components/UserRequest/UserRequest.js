@@ -12,7 +12,7 @@ const UserRequest = () => {
 
   const getAllUser = async () => {
     const { data } = await axios.get(
-      `https://immense-badlands-43010.herokuapp.com/api/requests?email=${user.user.email}`
+      `https://manobotar-deyal-backend.onrender.com/api/requests?email=${user.user.email}`
     )
     setAllUser(data)
     console.log(data)

@@ -12,7 +12,7 @@ const Test = () => {
   const user = useSelector(selectUser)
   const getAllUser = async () => {
     const { data } = await axios.get(
-      'https://immense-badlands-43010.herokuapp.com/api/allUser'
+      'https://manobotar-deyal-backend.onrender.com/api/allUser'
     )
     setAllUser(data)
     console.log(data)
@@ -21,7 +21,7 @@ const Test = () => {
     getAllUser()
   }, [])
   const handleDelete = id => {
-    fetch(`https://immense-badlands-43010.herokuapp.com/api/delete/${id}`, {
+    fetch(`https://manobotar-deyal-backend.onrender.com/api/delete/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

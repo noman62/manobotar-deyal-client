@@ -11,7 +11,7 @@ const Header = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     // make state null
-    const { data } = await axios.get('https://immense-badlands-43010.herokuapp.com/api/logout');
+    const { data } = await axios.get('https://manobotar-deyal-backend.onrender.com/api/logout');
     dispatch(logout());
     window.alert("logout Successfully")
     history.push("/login");

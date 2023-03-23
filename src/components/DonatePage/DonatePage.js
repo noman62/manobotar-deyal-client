@@ -11,7 +11,7 @@ const DonatePage = () => {
 
   const getAppointments = async () => {
     const { data } = await axios.get(
-      'https://immense-badlands-43010.herokuapp.com/api/donations'
+      'https://manobotar-deyal-backend.onrender.com/api/donations'
     )
 
     setAppointmentInfo(data)
@@ -38,7 +38,7 @@ const DonatePage = () => {
   const searchRecord=async()=>{
     
     const { data } = await axios.get(
-      `https://immense-badlands-43010.herokuapp.com/api/search?productName=${serachItem}`
+      `https://manobotar-deyal-backend.onrender.com/api/search?productName=${serachItem}`
     )
    
     setAppointmentInfo(data)

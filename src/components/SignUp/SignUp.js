@@ -25,7 +25,7 @@ const SignUp = () => {
       e.preventDefault()
       setLoading(true)
       axios
-        .post('https://immense-badlands-43010.herokuapp.com/api/register', {
+        .post('https://manobotar-deyal-backend.onrender.com/api/register', {
           ...user
         })
         .then(response => {
