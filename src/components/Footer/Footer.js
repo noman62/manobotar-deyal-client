@@ -17,9 +17,6 @@ const Footer = () => {
                 <div class="col-sm-4 p-4">
                     <i class="fa-brands fa-whatsapp px-4"></i>0180000000
                 </div>
-                <div class="col-sm-4 p-4">
-                    <i class="fa-solid fa-phone px-4"></i>01800000000
-                </div>
 
             </div>
             <div class="row">
